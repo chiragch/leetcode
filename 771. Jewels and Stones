@@ -1,0 +1,24 @@
+class Solution {
+    public int numJewelsInStones(String J, String S) {
+        if(J==null || J.length() == 0 || S==null || S.length() == 0){
+            return 0;
+        }
+        
+        int[] charToFreq = new int[256];
+        for(char ch : S.toCharArray()){
+            int ascii = ch;
+            System.out.println(ascii);
+            charToFreq[ch]++ ;
+        }
+        
+        int numJevels = 0;
+        for(char ch : J.toCharArray()){
+            int ascii = ch;
+            System.out.println(ascii);
+            if(charToFreq[ch] > 0){
+                numJevels += charToFreq[ch];
+            }
+        }
+        return numJevels;
+    }
+}

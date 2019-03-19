@@ -1,0 +1,27 @@
+class Solution {
+    public List<String> subdomainVisits(String[] cpdomains) {
+        List<String> ans  = new ArrayList<String>();
+        HashMap<String, Integer> count = new HashMap();
+        for(String str: cpdomains){
+            int i = str.indexOf(' ');
+            int n = Integer.valueOf(str.substring(0,i));
+            String s  = str.substring(i+1);
+            for(i=0;i<s.length();i++){
+                if(s.charAt(i) == '.'){
+                    String d = s.substring(i + 1);
+                    
+                    count.put(d, count.getOrDefault(d, 0) + n);
+                    System.out.println(count);
+                 }
+            }
+            count.put(s, count.getOrDefault(s, 0) + n);
+        }
+        
+        
+        
+        for (String d : count.keySet()) ans.add(count.get(d) + " " + d);
+        return ans;
+       
+       
+    }
+}
