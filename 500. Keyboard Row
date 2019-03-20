@@ -1,0 +1,30 @@
+class Solution {
+    public String[] findWords(String[] words) {
+        String[] keys = {"QWERTYUIOP","ASDFGHJKL","ZXCVBNM"};
+        HashMap<Character, Integer> match1 = new HashMap();
+        for(int i=0;i<keys.length;i++){
+           for (char c : keys[i].toCharArray()){
+                match1.put(c,i);
+               System.out.println(match1);
+            }
+        }
+        
+     List<String> res = new LinkedList<>();
+     for(String w :  words){
+          if(w.equals("")) continue;
+          int index = match1.get(w.toUpperCase().charAt(0));
+         for(char c: w.toUpperCase().toCharArray()){
+            
+             if(match1.get(c) != index){
+                 index = -1;
+                 break;
+             }
+         }
+         if(index!=-1) res.add(w);
+     }  
+        
+     return res.toArray(new String[0]);
+        
+        
+    }
+}
