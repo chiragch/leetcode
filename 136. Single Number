@@ -1,0 +1,18 @@
+class Solution {
+    public int singleNumber(int[] nums) {
+    HashMap<Integer, Integer> count = new HashMap<>();
+    int col = 0;
+    for(int i=0;i<nums.length;i++){
+        count.put(nums[i],count.getOrDefault(nums[i],0) +1);
+    }
+    
+    for(int c : count.keySet()){
+        int d  = count.get(c);
+        if(d<2){
+         col = c;
+            return col;
+        }
+    }
+     return col;
+    }
+}
